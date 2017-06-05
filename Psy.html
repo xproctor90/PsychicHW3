@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>The Xavier's Psychic Game</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+
+</head>
+    <!--jumbotron-->
+<body>
+
+   <div class="wrapper">
+      <div class="col-md-3">
+      </div>
+      </div>
+  
+    <div class="col-md-12 text-center">
+    <header>
+      <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-3">Xavier's Psychic Game</h1>
+        <div class="instructions">
+          <p class="lead">Try to guess the letter the computer has picked. Any letter from A - Z.</p>
+                  <br>
+          <h2>Are you Psychic?</h2>
+      </div>
+      </div>
+    </header>
+        </div>
+        </div>
+        
+      <div class="container">
+      <div class="row">
+         <div class="col-md-3">
+         </div>  
+
+    <!--Empty Div for the tallies-->
+     <div class="col-md-6">  
+        <div id="game">
+          <ul class="list-group">
+            <li class="list-group-item"><p id="wins">Wins: </p></li>
+            <li class="list-group-item"><p id="losses">Losses: </p></li>
+            <li class="list-group-item"><p id="guessLeft">Guesses Left: </p></li>
+            <li class="list-group-item"><p id="let">Your Guesses so far: </p></li>
+          </ul>  
+        </div>
+        </div>
+
+       <div class="col-md-3">  
+      </div>
+
+        </div>
+      </div>
+  </div> 
+  </div>
+
+    <div class="row">
+    <div class="col-md-12">
+      <div class="footer push">
+        <footer class="footer text-center">
+          <div class="container">
+          </div>
+        </footer>
+      </div>
+    </div>
+    </div>
+    </div>
+
+     <script type="text/javascript">
+
+var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+var wins = 0;
+var losses = 0;
+var guesses = 9;
+var guessesLeft = 9;
+var guessedLetters = [];
+var letterToGuess = null;
+
+
+
+var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+var updateGuessesLeft = function() {
+
+  document.querySelector('#guessLeft').innerHTML = "Guesses left: " + guessesLeft;
+};
+
+var updateLetterToGuess = function() {
+  this.letterToGuess = this.computerChoices[Math.floor(Math.random() * this.computerChoices.length)];
+};
+var updateGuessesSoFar = function() {
+
+  document.querySelector('#let').innerHTML = "Your Guesses so far: " + guessedLetters.join(', ');
+};
+
+
+var reset = function() {
+  totalGuesses = 9;
+  guessesLeft = 9;
+  guessedLetters = [];
+
+  updateLetterToGuess();
+  updateGuessesLeft();
+  updateGuessesSoFar();
+}
+
+updateLetterToGuess();
+updateGuessesLeft();
+
+
+
+document.onkeyup = function(event) {
+    guessesLeft--;
+  var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+  guessedLetters.push(userGuess);
+  updateGuessesLeft();
+  updateGuessesSoFar();
+
+        if (guessesLeft > 0){
+            if (userGuess == letterToGuess){
+                wins++;
+                document.querySelector('#wins').innerHTML = "Wins: " + wins;
+                alert("....are you a psychic?!?!?!");
+                reset();
+            }
+        }else if(guessesLeft == 0){
+
+            losses++;
+            document.querySelector('#losses').innerHTML = "Losses: " + losses;
+            alert("I knew physicis werent real! ");
+
+            reset();
+        }
+};
+
+ </script>   
+
+</body>
+
+</html>
