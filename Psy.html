@@ -71,9 +71,10 @@
     </div>
     </div>
     </div>
-
+// its better to put this script in a seperate file and link above 
      <script type="text/javascript">
 
+// nice work on the indentation! Your code looks much cleaner :)
 var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 var wins = 0;
@@ -106,6 +107,7 @@ var reset = function() {
   guessesLeft = 9;
   guessedLetters = [];
 
+  // good use of functions!
   updateLetterToGuess();
   updateGuessesLeft();
   updateGuessesSoFar();
@@ -131,7 +133,11 @@ document.onkeyup = function(event) {
                 alert("....are you a psychic?!?!?!");
                 reset();
             }
-        }else if(guessesLeft == 0){
+        }
+        
+        // when this block that was in the else statement, it was executed any time 'guessesLeft > 0'
+        // so losses were adding up more than necessary
+        if (guessesLeft == 0) {
 
             losses++;
             document.querySelector('#losses').innerHTML = "Losses: " + losses;
