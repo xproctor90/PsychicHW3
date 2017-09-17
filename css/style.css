@@ -1,0 +1,22 @@
+
+  body {
+ 	background-image: url(../img/psychic2.jpg);
+ }
+ * {
+	text-align: center;
+}
+body{
+	background-color: #FF851B;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #333;
+}
+
+.jumbotron {
+	color: white;
+	background-color: #0099ff(0,0,0,0.3);
+     background-color: rgba(0,0,0,0.3);
+     min-width: 800px;
+ }
+
